@@ -37,7 +37,7 @@ namespace Assignment5
                         ShowUpdateInformationMenu();
                         break;
                     case 3:
-                        factory.GeneratePayroll();
+                        DisplayPayroll();
                         break;
                     case 4:
                         System.Environment.Exit(0);
@@ -48,6 +48,27 @@ namespace Assignment5
                         break;
                 }
             } while (choice != 4);
+            Console.ReadKey();
+        }
+
+        private static void DisplayPayroll()
+        {
+            List<Payroll> payrollList = factory.GeneratePayroll();
+
+            foreach (Payroll e in payrollList)
+            {
+               Console.WriteLine("ID: " + e.ID);
+               Console.WriteLine("Name: " + e.EmployeeName);
+               Console.WriteLine("Number: " + e.EmployeeNumber);
+               Console.WriteLine("Shift Number: " + e.ShiftNumber);
+               Console.WriteLine("Shift: " + e.Shift);
+               Console.WriteLine("Salary: " + e.Salary);
+               Console.WriteLine();
+            }
+
+
+            Console.WriteLine("\nPayroll saved to file.");
+            Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
 

@@ -177,8 +177,10 @@ namespace Assignment5
             Console.ReadKey();
         }
 
-        internal void GeneratePayroll()
+        internal List<Payroll> GeneratePayroll()
         {
+            List<Payroll> payrollList = new List<Payroll>();
+
             Console.Clear();
 
             foreach (Employee employee in Employees)
@@ -193,19 +195,11 @@ namespace Assignment5
                 Payroll payroll = new Payroll(ID, employeeName, employeeNumber, shiftNumber, shift, salary);
                 Utility.WriteToJsonFile(@"Payroll.json", payroll);
 
-                Console.WriteLine("ID: " + ID);
-                Console.WriteLine("Name: " + employeeName);
-                Console.WriteLine("Number: " + employeeNumber);
-                Console.WriteLine("Shift Number: " + shiftNumber);
-                Console.WriteLine("Shift: " + shift);
-                Console.WriteLine("Salary: $" + salary);
-                Console.WriteLine();
+                payrollList.Add(payroll);
             }
 
-            Console.WriteLine("\nPayroll saved to file.");
-            Console.WriteLine("\nPress any key to continue...");
-            Console.ReadKey();
-        }
+            return payrollList;
+}
 
 
     }
